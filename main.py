@@ -1,3 +1,12 @@
+__author__ = "Fateh Sandhu"
+__email__ = "fatehkaran@huskers.unl.edu"
+
+"""
+Takes in a weblink or text and converts it into qrCode using a GUI
+Built using Tkinter library.
+
+"""
+
 import sys
 import tkinter as tk
 import qrcode as qr
@@ -7,6 +16,7 @@ qrCode = qr.make("welcome")
 qrCode.save("qr.png")
 
 
+# define function that updates qrCode when <generateQR> button is clicked.
 def gen_code():
     text = ent_val.get()
     qrCode = qr.make(text)

@@ -1,6 +1,8 @@
 __author__ = "Fateh Sandhu"
 __email__ = "fatehkaran@huskers.unl.edu"
 
+from tkinter import messagebox
+
 """
 Takes in a weblink or text and converts it into qrCode using a GUI
 Built using Tkinter library.
@@ -15,6 +17,17 @@ from PIL import Image
 qrCode = qr.make("welcome")
 qrCode.save("qr.png")
 
+window = tk.Tk()
+window.title("QR Code Generator")
+
+lbl_insert = tk.Label(text="Enter text or weblink: ")
+lbl_insert.pack()
+ent_val = tk.Entry(lbl_insert, width=40, bg="white", fg="black", text="Enter text/weblink")
+ent_val.pack()
+qrImg = tk.PhotoImage(file="qr.png")
+display = tk.Label(image=qrImg)
+display.pack(side=tk.BOTTOM)
+
 
 # define function that updates qrCode when <generateQR> button is clicked.
 def gen_code():
@@ -28,17 +41,7 @@ def gen_code():
     return
 
 
-window = tk.Tk()
-window.title("QR Code Generator")
-
-lbl_insert = tk.Label(text="Enter text or weblink: ")
-lbl_insert.pack()
-ent_val = tk.Entry(width=40, bg="white", fg="black", text="Enter text/weblink")
-ent_val.pack()
-qrImg = tk.PhotoImage(file="qr.png")
-display = tk.Label(image=qrImg)
-btn = tk.Button(text="Generate QR", command=gen_code())
+btn = tk.Button(text="Generate QR", command=gen_code)
 btn.pack()
-display.pack(side=tk.BOTTOM)
 
 window.mainloop()
